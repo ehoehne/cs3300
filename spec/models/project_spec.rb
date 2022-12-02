@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
-    
+
     context "validations tests" do
         #testing if project has title
         it "ensures the title is present" do
