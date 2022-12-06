@@ -1,14 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Projects</h1>
-
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
+<div class="bg-light">
+  <div class="container-fluid">
+    <div class="row row-cols-lg-3 m-2">
+      <% @projects.each do |project| %>
+        <div class="col">
+          <div class="card shadow-sm m-2">
+            <div class="card-body">
+              <h5 class="card-title"><%= project.title%></h5>
+              <p class="card-text"><%= project.description%></p>
+              <%= link_to "Show Project", project_path(project.id), id: "projects/#{project.id}" %> 
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= link_to "New project", new_project_path %>
