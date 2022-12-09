@@ -1,27 +1,25 @@
 <%= form_with(model: project) do |form| %>
-  <% if project.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-        <% project.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="row m-3">
+    <div class=" col-md-5 text-center container">
+      <% if project.errors.any? %>
+        <div class="text-warning">
+          <% project.errors.each do |error| %>
+            <p><%= error.full_message %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <%= form.label :title, class: "control-label" %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+      <p></p>
+      <div>
+        <%= form.label :description, class: "control-label" %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+      <p></p>
+      <button type="submit" class="btn btn-outline-secondary mb-3">Save Project</button>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
   </div>
 <% end %>

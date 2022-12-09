@@ -7,6 +7,8 @@ ruby "3.0.2"
 gem "rails", "~> 7.0.3"
 
 gem 'devise'
+gem "devise-i18n"
+gem "devise-bootstrap5"
 
 #bootstrap and jquery gems
 gem 'bootstrap', '~> 5.2.2'

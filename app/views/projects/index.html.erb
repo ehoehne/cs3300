@@ -1,15 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<%= render 'layouts/jumbotron' %>
 
 <div class="bg-light">
   <div class="container-fluid">
-    <div class="row row-cols-lg-3 m-2">
+    <div class="row row-cols-sm-3 m-4">
       <% @projects.each do |project| %>
         <div class="col">
-          <div class="card shadow-sm m-2">
+          <div class="card bg-light shadow-sm m-2">
+            <div class="card-header h5"><strong><%= project.title%></strong></div>
             <div class="card-body">
-              <h5 class="card-title"><%= project.title%></h5>
-              <p class="card-text"><%= project.description%></p>
-              <%= link_to "Show Project", project_path(project.id), id: "projects/#{project.id}" %> 
+              <p class="card-text text-truncate"><%= project.description%></p>
+              <%= link_to "Show Project", project_path(project.id), id: "projects/#{project.id}", class: "link-dark" %> 
             </div>
           </div>
         </div>
@@ -17,5 +17,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to "New project", new_project_path %>
