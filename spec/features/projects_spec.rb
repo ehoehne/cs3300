@@ -6,7 +6,7 @@ RSpec.feature "Projects", type: :feature do
     testUser = FactoryBot.create(:user)
     sign_in testUser
     visit new_project_path
-    within("form") do
+    within("#project_form") do
       fill_in "Title", with: "Test title"
     end
   end
@@ -15,12 +15,12 @@ RSpec.feature "Projects", type: :feature do
 
     scenario "should be successful" do
       fill_in "Description", with: "Test description"
-      click_button "Create Project"
+      click_button "Save Project"
       expect(page).to have_content("Project was successfully created")
     end
 
     scenario "should fail" do
-      click_button "Create Project"
+      click_button "Save Project"
       expect(page).to have_content("Description can't be blank")
     end
   end
@@ -32,18 +32,18 @@ RSpec.feature "Projects", type: :feature do
     end
 
     scenario "should be successful" do
-      within("form") do
+      within("#project_form") do
         fill_in "Description", with: "New description content"
       end
-      click_button "Update Project"
+      click_button "Save Project"
       expect(page).to have_content("Project was successfully updated")
     end
 
     scenario "should fail" do
-      within("form") do
+      within("#project_form") do
         fill_in "Description", with: ""
       end
-      click_button "Update Project"
+      click_button "Save Project"
       expect(page).to have_content("Description can't be blank")
     end
   end
@@ -55,7 +55,7 @@ RSpec.feature "Projects", type: :feature do
     scenario "remove project" do
       visit projects_path
       click_link "Show Project"
-      click_button "Destroy this project"
+      click_button "Destroy project"
       expect(page).to have_content("Project was successfully destroyed")
       expect(Project.count).to eq(0)
     end
